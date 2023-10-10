@@ -18,13 +18,13 @@ public class RecruitmentController {
         this.recruitmentService = recruitmentService;
     };
     // 채용공고 목록 가져오기
-    @GetMapping("/{recruitment-id}")
-    public ResponseEntity<?> list(@PathVariable("recruitment-id") Long id,
-                                 @RequestParam("page") int page,
+    @GetMapping
+    public ResponseEntity<?> list(@RequestParam("page") int page,
                                  @RequestParam("size") int size){
-        return new ResponseEntity<>(recruitmentService.findAll(id, page, size), HttpStatus.OK);
+        return new ResponseEntity<>(recruitmentService.findAll(page, size), HttpStatus.OK);
     }
     // 채용공고 등록
+//    @PostMapping()
     // 채용공고 수정
     // 채용공고 삭제
     // 채용공고 검색 기능

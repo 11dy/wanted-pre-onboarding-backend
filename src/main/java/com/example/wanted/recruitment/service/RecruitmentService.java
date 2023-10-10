@@ -27,10 +27,10 @@ public class RecruitmentService {
     }
 
     @Transactional(readOnly = true)
-    public Object findAll(Long id, int page, int size){
+    public Object findAll( int page, int size){
         Pageable pageable = PageRequest.of(page-1, size);
 
-        Page<Recruitment> recruitments = recruitmentRepository.findAllById(id, pageable);
+        Page<Recruitment> recruitments = recruitmentRepository.findAll(pageable);
         List<Recruitment> recruitmentList = recruitments.getContent();
 
         return new MultiResponseDto<>(
