@@ -64,8 +64,32 @@ public class RecruitmentService {
 
     public Boolean findPostedCompany(Long companyId){
         Optional<Company> companyOptional = companyRepository.findById(companyId);
-//        Company findCompany = companyOptional.orElseThrow(() -> new BusinessLogicException(ExceptionCode.COMPANY_NOT_FOUND));
         return companyOptional.isPresent();
     }
 
+
+    public Recruitment updateRecruitment(Recruitment recruitment, Long recruitmentId) {
+        Recruitment findRecruitment = findRecruitment(recruitmentId);
+        Optional.ofNullable(recruitment.getPosition())
+                .ifPresent(recruitmentPosition -> findRecruitment.setPosition(recruitmentPosition));
+        Optional.ofNullable(recruitment.getReward())
+                .ifPresent(recruitmentReward -> findRecruitment.setReward(recruitmentReward));
+        Optional.ofNullable(recruitment.getDescription())
+                .ifPresent(recruitmentDescription -> findRecruitment.setDescription(recruitmentDescription));
+        Optional.ofNullable(recruitment.getSkill())
+                .ifPresent(recruitmentSkill -> findRecruitment.setSkill(recruitmentSkill));
+        Recruitment modifiedRecruitment = recruitmentRepository.save(findRecruitment);
+
+        return modifiedRecruitment;
+    }
+
+    // update 관련 채공공고 존재 판단 메서드
+    @Transactional
+    public Recruitment findRecruitment(Long recruitmentId){
+        Optional<Recruitment> optionalRecruitment =
+                recruitmentRepository.findById(recruitmentId);
+        Recruitment findRecruitment =
+                optionalRecruitment.orElseThrow(IllegalArgumentException::new);
+        return findRecruitment;
+    }
 }

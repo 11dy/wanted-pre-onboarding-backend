@@ -1,5 +1,6 @@
 package com.example.wanted.recruitment.controller;
 
+import com.example.wanted.recruitment.dto.RecruitmentPatchDto;
 import com.example.wanted.recruitment.dto.RecruitmentPostDto;
 import com.example.wanted.recruitment.dto.RecruitmentResponseDto;
 import com.example.wanted.recruitment.dto.SingleResponseDto;
@@ -43,11 +44,12 @@ public class RecruitmentController {
     }
 
     // 채용공고 수정
-//    @PatchMapping("/update/{recruitment-id}")
-//    public ResponseEntity<?> update(@PathVariable("recruitment-id") Long recruitmentId,
-//                                    @RequestBody RecruitmentPatchDto requestBody){
-//
-//    }
+    @PatchMapping("/update/{recruitment-id}")
+    public ResponseEntity<?> update(@PathVariable("recruitment-id") Long recruitmentId,
+                                    @RequestBody RecruitmentPatchDto requestBody){
+        Recruitment patchRecruitment = recruitmentService.updateRecruitment(mapper.recruitmentPatchDtoToRecruitment(requestBody), recruitmentId);
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.recruitmentToRecruitmentResponseDtoPatch(patchRecruitment)), HttpStatus.OK);
+    }
     // 채용공고 삭제
     // 채용공고 검색 기능
     // 채용상세페이지

@@ -27,4 +27,14 @@ public class RecruitmentResponseDto {
         private String description;
         private String skill;
     }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    public static class Patch{
+        private String position;
+        private String reward;
+        private String description;
+        private String skill;
+    }
 }

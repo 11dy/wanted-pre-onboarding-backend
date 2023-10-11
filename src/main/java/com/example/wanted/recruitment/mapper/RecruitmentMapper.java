@@ -1,5 +1,6 @@
 package com.example.wanted.recruitment.mapper;
 
+import com.example.wanted.recruitment.dto.RecruitmentPatchDto;
 import com.example.wanted.recruitment.dto.RecruitmentPostDto;
 import com.example.wanted.recruitment.dto.RecruitmentResponseDto;
 import com.example.wanted.recruitment.entity.Company;
@@ -84,5 +85,38 @@ public class RecruitmentMapper {
         postResponseDto.setSkill(recruitment.getCompany().getSkill());
 
         return postResponseDto;
+    }
+
+    // update
+    public Recruitment recruitmentPatchDtoToRecruitment(RecruitmentPatchDto requestBody){
+        if(requestBody == null){
+            return null;
+        }
+        Recruitment recruitment = new Recruitment();
+        recruitment.setPosition(requestBody.getPosition());
+        recruitment.setSkill(requestBody.getSkill());
+        recruitment.setReward(requestBody.getReward());
+        recruitment.setDescription(requestBody.getDescription());
+
+        return recruitment;
+    }
+
+    public RecruitmentResponseDto.Patch recruitmentToRecruitmentResponseDtoPatch(Recruitment patchRecruitment) {
+        if(patchRecruitment == null){
+            return null;
+        }
+        RecruitmentResponseDto.Patch patchResponseDto = new RecruitmentResponseDto.Patch(
+                patchRecruitment.getPosition(),
+                patchRecruitment.getDescription(),
+                patchRecruitment.getReward(),
+                patchRecruitment.getSkill()
+        );
+        patchResponseDto.setPosition(patchRecruitment.getPosition());
+        patchResponseDto.setDescription(patchRecruitment.getDescription());
+        patchResponseDto.setReward(patchRecruitment.getReward());
+        patchResponseDto.setSkill(patchRecruitment.getSkill());
+
+        return patchResponseDto;
+
     }
 }
