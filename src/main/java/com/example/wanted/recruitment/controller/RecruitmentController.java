@@ -51,6 +51,11 @@ public class RecruitmentController {
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.recruitmentToRecruitmentResponseDtoPatch(patchRecruitment)), HttpStatus.OK);
     }
     // 채용공고 삭제
+    @DeleteMapping("/delete/{recruitment-id}")
+    public ResponseEntity<?> remove(@PathVariable("recruitment-id")Long recruitmentId){
+        recruitmentService.deleteRecruitment(recruitmentId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
     // 채용공고 검색 기능
     // 채용상세페이지
 }

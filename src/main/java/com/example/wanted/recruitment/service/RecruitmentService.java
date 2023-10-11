@@ -83,7 +83,7 @@ public class RecruitmentService {
         return modifiedRecruitment;
     }
 
-    // update 관련 채공공고 존재 판단 메서드
+    // 채공공고 존재 판단 메서드
     @Transactional
     public Recruitment findRecruitment(Long recruitmentId){
         Optional<Recruitment> optionalRecruitment =
@@ -91,5 +91,10 @@ public class RecruitmentService {
         Recruitment findRecruitment =
                 optionalRecruitment.orElseThrow(IllegalArgumentException::new);
         return findRecruitment;
+    }
+
+    public void deleteRecruitment(Long recruitmentId) {
+        Recruitment recruitment = findRecruitment(recruitmentId);
+        recruitmentRepository.delete(recruitment);
     }
 }
