@@ -16,4 +16,15 @@ public class RecruitmentResponseDto {
     private String position;
     private String reward;
     private String skill;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    public static class Post{
+        private Long companyId;
+        private String position;
+        private String reward;
+        private String description;
+        private String skill;
+    }
 }

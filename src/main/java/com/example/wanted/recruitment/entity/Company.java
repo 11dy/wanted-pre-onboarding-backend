@@ -1,5 +1,6 @@
 package com.example.wanted.recruitment.entity;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Getter
 public class Company {
     @Id
@@ -16,14 +17,36 @@ public class Company {
     @Column(name="company_id")
     private Long id;
 
+    @NotNull
     private String companyName;
 
+    @NotNull
     private String country;
 
+    @NotNull
     private String region;
 
+    @NotNull
     private String skill;
 
     @OneToMany(mappedBy = "company") // 읽기만 가능
     private List<Recruitment> recruitments = new ArrayList<>();
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill;
+    }
+
+
 }
