@@ -1,5 +1,6 @@
-package com.example.wanted.recruitment.dto;
+package com.example.wanted.recruitment.dto.util;
 
+import com.example.wanted.recruitment.dto.util.PageInfo;
 import lombok.Getter;
 import org.springframework.data.domain.Page;
 

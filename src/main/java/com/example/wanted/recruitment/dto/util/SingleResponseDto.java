@@ -1,4 +1,4 @@
-package com.example.wanted.recruitment.dto;
+package com.example.wanted.recruitment.dto.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

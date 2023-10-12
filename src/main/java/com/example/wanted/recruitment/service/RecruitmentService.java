@@ -2,7 +2,8 @@ package com.example.wanted.recruitment.service;
 
 import com.example.wanted.exception.BusinessLogicException;
 import com.example.wanted.exception.ExceptionCode;
-import com.example.wanted.recruitment.dto.MultiResponseDto;
+import com.example.wanted.recruitment.dto.util.MultiResponseDto;
+import com.example.wanted.recruitment.dto.util.SingleResponseDto;
 import com.example.wanted.recruitment.entity.Company;
 import com.example.wanted.recruitment.entity.Recruitment;
 import com.example.wanted.recruitment.mapper.RecruitmentMapper;
@@ -11,7 +12,6 @@ import com.example.wanted.recruitment.repository.RecruitmentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-
-import static com.mysql.cj.conf.PropertyKey.logger;
 
 @Service
 @Transactional
@@ -96,5 +94,13 @@ public class RecruitmentService {
     public void deleteRecruitment(Long recruitmentId) {
         Recruitment recruitment = findRecruitment(recruitmentId);
         recruitmentRepository.delete(recruitment);
+    }
+
+    // 채용상세 페이지
+    @Transactional(readOnly = true)
+    public Object findDetail(Long recruitmentId){
+        Optional<Recruitment> detailPage = recruitmentRepository.findById(recruitmentId);
+        Recruitment result = detailPage.orElseThrow(IllegalArgumentException::new);
+        return new SingleResponseDto<>(mapper.recruitmentToDetailResponseDto(result));
     }
 }

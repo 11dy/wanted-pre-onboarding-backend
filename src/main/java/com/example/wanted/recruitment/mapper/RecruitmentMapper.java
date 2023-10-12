@@ -1,5 +1,6 @@
 package com.example.wanted.recruitment.mapper;
 
+import com.example.wanted.recruitment.dto.DetailResponseDto;
 import com.example.wanted.recruitment.dto.RecruitmentPatchDto;
 import com.example.wanted.recruitment.dto.RecruitmentPostDto;
 import com.example.wanted.recruitment.dto.RecruitmentResponseDto;
@@ -9,6 +10,7 @@ import com.example.wanted.recruitment.repository.CompanyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,13 +34,13 @@ public class RecruitmentMapper {
                 recruitment.getReward(),
                 recruitment.getCompany().getSkill()
         );
-        recruitmentResponseDto.setId(recruitment.getId());
-        recruitmentResponseDto.setCompanyName(recruitment.getCompany().getCompanyName());
-        recruitmentResponseDto.setCountry(recruitment.getCompany().getCountry());
-        recruitmentResponseDto.setRegion(recruitment.getCompany().getRegion());
-        recruitmentResponseDto.setPosition(recruitment.getPosition());
-        recruitmentResponseDto.setReward(recruitment.getReward());
-        recruitmentResponseDto.setSkill(recruitment.getCompany().getSkill());
+//        recruitmentResponseDto.setId(recruitment.getId());
+//        recruitmentResponseDto.setCompanyName(recruitment.getCompany().getCompanyName());
+//        recruitmentResponseDto.setCountry(recruitment.getCompany().getCountry());
+//        recruitmentResponseDto.setRegion(recruitment.getCompany().getRegion());
+//        recruitmentResponseDto.setPosition(recruitment.getPosition());
+//        recruitmentResponseDto.setReward(recruitment.getReward());
+//        recruitmentResponseDto.setSkill(recruitment.getCompany().getSkill());
 
         return recruitmentResponseDto;
     }
@@ -78,11 +80,11 @@ public class RecruitmentMapper {
                 recruitment.getDescription(),
                 recruitment.getCompany().getSkill()
         );
-        postResponseDto.setCompanyId(recruitment.getCompany().getId());
-        postResponseDto.setPosition(recruitment.getPosition());
-        postResponseDto.setReward(recruitment.getReward());
-        postResponseDto.setDescription(recruitment.getDescription());
-        postResponseDto.setSkill(recruitment.getCompany().getSkill());
+//        postResponseDto.setCompanyId(recruitment.getCompany().getId());
+//        postResponseDto.setPosition(recruitment.getPosition());
+//        postResponseDto.setReward(recruitment.getReward());
+//        postResponseDto.setDescription(recruitment.getDescription());
+//        postResponseDto.setSkill(recruitment.getCompany().getSkill());
 
         return postResponseDto;
     }
@@ -111,12 +113,36 @@ public class RecruitmentMapper {
                 patchRecruitment.getReward(),
                 patchRecruitment.getSkill()
         );
-        patchResponseDto.setPosition(patchRecruitment.getPosition());
-        patchResponseDto.setDescription(patchRecruitment.getDescription());
-        patchResponseDto.setReward(patchRecruitment.getReward());
-        patchResponseDto.setSkill(patchRecruitment.getSkill());
+//        patchResponseDto.setPosition(patchRecruitment.getPosition());
+//        patchResponseDto.setDescription(patchRecruitment.getDescription());
+//        patchResponseDto.setReward(patchRecruitment.getReward());
+//        patchResponseDto.setSkill(patchRecruitment.getSkill());
 
         return patchResponseDto;
-
     }
+
+    // detail
+    public DetailResponseDto recruitmentToDetailResponseDto(Recruitment recruitment){
+        if(recruitment == null){
+            return null;
+        }
+        List<Long> recruitmentIds = new ArrayList<>();
+        for(Recruitment r: recruitment.getCompany().getRecruitments()){
+            recruitmentIds.add(r.getId());
+        }
+
+        DetailResponseDto detailResponseDto= new DetailResponseDto(
+                recruitment.getId(),
+                recruitment.getCompany().getCompanyName(),
+                recruitment.getCompany().getCountry(),
+                recruitment.getCompany().getRegion(),
+                recruitment.getPosition(),
+                recruitment.getReward(),
+                recruitment.getCompany().getSkill(),
+                recruitment.getDescription(),
+                recruitmentIds
+        );
+        return detailResponseDto;
+    }
+
 }
