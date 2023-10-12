@@ -58,12 +58,20 @@ public class RecruitmentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // 채용공고 검색 기능
-
     // 채용상세페이지
     @GetMapping("/detail/{recruitment-id}")
     public ResponseEntity<?> detail(@PathVariable("recruitment-id")Long recruitmentId){
         return new ResponseEntity<>(recruitmentService.findDetail(recruitmentId), HttpStatus.OK);
     }
+
+    // 채용공고 검색 기능
+    @GetMapping("/query")
+    public ResponseEntity<?> search(@RequestParam("page") int page,
+                                    @RequestParam("size") int size,
+                                    @RequestParam("search")String keyword){
+        return new ResponseEntity<>(recruitmentService.searchRecruitment(page, size, keyword), HttpStatus.OK);
+
+    }
+
 
 }

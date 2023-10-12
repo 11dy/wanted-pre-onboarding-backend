@@ -34,13 +34,7 @@ public class RecruitmentMapper {
                 recruitment.getReward(),
                 recruitment.getCompany().getSkill()
         );
-//        recruitmentResponseDto.setId(recruitment.getId());
-//        recruitmentResponseDto.setCompanyName(recruitment.getCompany().getCompanyName());
-//        recruitmentResponseDto.setCountry(recruitment.getCompany().getCountry());
-//        recruitmentResponseDto.setRegion(recruitment.getCompany().getRegion());
-//        recruitmentResponseDto.setPosition(recruitment.getPosition());
-//        recruitmentResponseDto.setReward(recruitment.getReward());
-//        recruitmentResponseDto.setSkill(recruitment.getCompany().getSkill());
+
 
         return recruitmentResponseDto;
     }
@@ -80,11 +74,6 @@ public class RecruitmentMapper {
                 recruitment.getDescription(),
                 recruitment.getCompany().getSkill()
         );
-//        postResponseDto.setCompanyId(recruitment.getCompany().getId());
-//        postResponseDto.setPosition(recruitment.getPosition());
-//        postResponseDto.setReward(recruitment.getReward());
-//        postResponseDto.setDescription(recruitment.getDescription());
-//        postResponseDto.setSkill(recruitment.getCompany().getSkill());
 
         return postResponseDto;
     }
@@ -113,10 +102,7 @@ public class RecruitmentMapper {
                 patchRecruitment.getReward(),
                 patchRecruitment.getSkill()
         );
-//        patchResponseDto.setPosition(patchRecruitment.getPosition());
-//        patchResponseDto.setDescription(patchRecruitment.getDescription());
-//        patchResponseDto.setReward(patchRecruitment.getReward());
-//        patchResponseDto.setSkill(patchRecruitment.getSkill());
+
 
         return patchResponseDto;
     }

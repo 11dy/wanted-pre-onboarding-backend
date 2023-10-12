@@ -39,7 +39,7 @@ public class RecruitmentService {
     }
 
     @Transactional(readOnly = true)
-    public Object findAll( int page, int size){
+    public Object findAll(int page, int size){
         Pageable pageable = PageRequest.of(page-1, size);
 
         Page<Recruitment> recruitments = recruitmentRepository.findAll(pageable);
@@ -102,5 +102,18 @@ public class RecruitmentService {
         Optional<Recruitment> detailPage = recruitmentRepository.findById(recruitmentId);
         Recruitment result = detailPage.orElseThrow(IllegalArgumentException::new);
         return new SingleResponseDto<>(mapper.recruitmentToDetailResponseDto(result));
+    }
+
+    // 채용공고 검색
+    @Transactional(readOnly = true)
+    public Object searchRecruitment(int page, int size, String keyword){
+        Pageable pageable = PageRequest.of(page-1, size);
+
+        Page<Recruitment> searchRecruitments = recruitmentRepository.searchByKeyword(keyword, pageable);
+        List<Recruitment> recruitmentList = searchRecruitments.getContent();
+
+        return new MultiResponseDto<>(
+                mapper.recruitmentToRecruitmentResponseDtos(recruitmentList),
+                searchRecruitments);
     }
 }
