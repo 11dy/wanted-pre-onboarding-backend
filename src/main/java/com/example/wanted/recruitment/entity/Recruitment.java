@@ -1,10 +1,11 @@
 package com.example.wanted.recruitment.entity;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,6 +27,10 @@ public class Recruitment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="company_id")
     private Company company;
+
+    @OneToMany(mappedBy = "recruitment")
+    private List<Users> users = new ArrayList<>();
+
 
 
     // 생성자 추가

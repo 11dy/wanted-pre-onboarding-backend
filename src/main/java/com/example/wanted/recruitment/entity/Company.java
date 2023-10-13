@@ -29,7 +29,7 @@ public class Company {
     @NotNull
     private String skill;
 
-    @OneToMany(mappedBy = "company") // 읽기만 가능
+    @OneToMany(mappedBy = "company")
     private List<Recruitment> recruitments = new ArrayList<>();
 
     public void setCompanyName(String companyName) {
