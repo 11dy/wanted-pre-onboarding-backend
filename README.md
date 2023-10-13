@@ -1,4 +1,9 @@
 # wanted-pre-onboarding-backend
+<br>
+## [troubleshooting] 
+- git reset --hard abcdef 오용으로 인한 이슈 발생 > 커밋 내역 삭제 
+- 백업해둔 최종본으로 로컬 최신화 후 강제 push.
+<br>
 ## API 명세서 
 https://documenter.getpostman.com/view/22700146/2s9YR56EaX
 
@@ -10,7 +15,7 @@ https://documenter.getpostman.com/view/22700146/2s9YR56EaX
    - 채용공고 검색 기능
 5. 채용 상세 페이지 조회
 6. 사용자 채용공고 지원
-
+<br>
 ## ✉️ Commit Message
 
 | 이름     | 내용                                                                  |
