@@ -1,5 +1,6 @@
 # wanted-pre-onboarding-backend
 <br>
+- CSR 방식으로 구현했습니다. 
 
 ## [troubleshooting] 
 - git reset --hard abcdef 오용으로 인한 이슈 발생 > 커밋 내역 삭제 
