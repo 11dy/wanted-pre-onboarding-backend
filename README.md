@@ -20,13 +20,13 @@ https://documenter.getpostman.com/view/22700146/2s9YR56EaX
 5. 채용 상세 페이지 조회
 6. 사용자 채용공고 지원
 <br>
+
 ## ERD
+
 <img width="80%" src="https://github.com/11dy/wanted-pre-onboarding-backend/assets/96255906/5a6575d4-a8ec-42a7-9040-db55b0dbb75c"/>
 
-
-![원티드 인턴십 (1)](https://github.com/11dy/wanted-pre-onboarding-backend/assets/96255906/5a6575d4-a8ec-42a7-9040-db55b0dbb75c)
-
 <br>
+
 ## ✉️ Commit Message
 
 | 이름     | 내용                                                                  |
