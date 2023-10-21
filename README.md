@@ -1,4 +1,5 @@
 # wanted-pre-onboarding-backend
+원티드 채용공고 구현 사전과제
 <br>
 - CSR 방식으로 구현했습니다. 
 
