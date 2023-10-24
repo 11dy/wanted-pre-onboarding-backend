@@ -1,7 +1,8 @@
 # wanted-pre-onboarding-backend
 원티드 채용공고 구현 사전과제
 <br>
-- CSR 방식으로 구현했습니다. 
+- CSR 방식으로 구현했습니다.
+- skill: spring boot, spring data jpa, Mysql
 
 ## [troubleshooting] 
 - git reset --hard abcdef 오용으로 인한 이슈 발생 > 커밋 내역 삭제 
@@ -11,6 +12,20 @@
 
 ## API 명세서 
 https://documenter.getpostman.com/view/22700146/2s9YR56EaX
+
+## 요구사항 
+1. 채용공고를 등록합니다.
+   '''
+   Example)
+# 데이터 예시이며, 필드명은 임의로 설정가능합니다.
+{
+  "회사_id":회사_id,
+  "채용포지션":"백엔드 주니어 개발자",
+  "채용보상금":1000000,
+  "채용내용":"원티드랩에서 백엔드 주니어 개발자를 채용합니다. 자격요건은..",
+  "사용기술":"Python"
+}
+'''
 
 ## 구현 기능 목록 
 1. 채용공고 등록 
